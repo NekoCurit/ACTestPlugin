@@ -1,0 +1,7 @@
+#file: noinspection SpellCheckingInspection
+name: ACTest
+version: 1.0
+main: kawaii.nahida.actest.ACTestPlugin
+api-version: 1.8
+author: NekoCurit
+description: 猫猫的测试服务器基础插件
