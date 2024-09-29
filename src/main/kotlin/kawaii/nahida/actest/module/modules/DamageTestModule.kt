@@ -11,12 +11,13 @@ class DamageTestModule : Module("DamageTest") {
     @EventHandler
     fun onPlayerAttack(event: EntityDamageByEntityEvent) {
         if (event.isCancelled) return
-        
+
         (event.damager as? Player)
             ?.sendActionBar(
                 arrayOf(
                     "预测伤害: ${String.format("%.1f", event.damage)}",
                     "实际伤害: ${String.format("%.1f", event.finalDamage)}",
+                    "预测距离: ${String.format("%.2f", event.damager.location.distance(event.entity.location))}",
                     "攻击疾跑: ${if((event.damager as? Player)?.isSprinting == true) "是" else "否"}",
                     "攻击潜行: ${if((event.damager as? Player)?.isSneaking == true) "是" else "否"}"
                 ).joinToString(" ")
