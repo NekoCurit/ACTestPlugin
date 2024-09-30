@@ -3,6 +3,7 @@ package kawaii.nahida.actest.module.modules
 import kawaii.nahida.actest.ACTest
 import kawaii.nahida.actest.module.Module
 import kawaii.nahida.actest.utils.StringUtils
+import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -11,6 +12,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
+import org.bukkit.scoreboard.Criteria
 import org.bukkit.scoreboard.DisplaySlot
 import org.bukkit.scoreboard.Objective
 
@@ -22,12 +24,11 @@ class ScoreboardModule : Module("Scoreboard") {
     @EventHandler
     fun onPlayerJoin(event: PlayerJoinEvent) {
         val player = event.player
-        val scoreboard = Bukkit.getScoreboardManager()?.newScoreboard ?: return
+        val scoreboard = Bukkit.getScoreboardManager().newScoreboard
 
         player.scoreboard = scoreboard
-        val objective = scoreboard.registerNewObjective("Scoreboard", "dummy").apply {
+        val objective = scoreboard.registerNewObjective("Scoreboard", Criteria.DUMMY, Component.text("猫猫的测试服务器")).apply {
             displaySlot = DisplaySlot.SIDEBAR
-            displayName = "猫猫的测试服务器"
         }
 
         objectives[player] = Pair(objective, hashMapOf())
@@ -50,7 +51,7 @@ class ScoreboardModule : Module("Scoreboard") {
     }
 
     private fun onUpdateScoreboard(player: Player) {
-        Bukkit.getScoreboardManager()?.let {
+        Bukkit.getScoreboardManager().let {
             val objective = objectives[player] ?: return
 
             // 更新计分板的分数
@@ -75,7 +76,7 @@ class ScoreboardModule : Module("Scoreboard") {
                     .also {
                         // 主线程执行
                         // 避免计分板频闪
-                        Bukkit.getScheduler().runTask(ACTest.instance) {
+                        Bukkit.getScheduler().runTask(ACTest.instance, Runnable {
                             it.forEachIndexed { index, message ->
                                 // 仅更新不同消息
                                 // 好处很多 比如说减少发包频率
@@ -84,17 +85,17 @@ class ScoreboardModule : Module("Scoreboard") {
                                     // 添加新的值
                                     objective.first.getScore(message).score = index
                                     // 清除相同分数的值
-                                    objective.first.scoreboard.entries.forEach { entry ->
+                                    objective.first.scoreboard?.entries?.forEach { entry ->
                                         if (
                                             objective.first.getScore(entry).score == index &&
                                             objective.first.getScore(entry).entry != message
                                         ) {
-                                            objective.first.scoreboard.resetScores(entry)
+                                            objective.first.scoreboard?.resetScores(entry)
                                         }
                                     }
                                 }
                             }
-                        }
+                        })
                     }
 
             } catch (e: Exception) {

@@ -1,4 +1,3 @@
-#file: noinspection SpellCheckingInspection
 name: ACTest
 version: 1.0
 main: kawaii.nahida.actest.ACTestPlugin
@@ -33,3 +32,5 @@ commands:
   spawn:
     description: 返回出生点
     usage: /spawn
+
+softdepend: [ProtocolLib]

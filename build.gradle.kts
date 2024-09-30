@@ -13,16 +13,15 @@ repositories {
     maven("https://repo.dmulloy2.net/repository/public/")
 }
 
-@Suppress("VulnerableLibrariesLocal")
 dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.reflections:reflections:0.9.12")
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0-SNAPSHOT")
 }
 
 
-val targetJavaVersion = 8
+val targetJavaVersion = 17
 kotlin {
     jvmToolchain(targetJavaVersion)
 }

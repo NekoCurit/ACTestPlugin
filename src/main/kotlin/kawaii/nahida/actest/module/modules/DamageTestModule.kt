@@ -1,7 +1,7 @@
 package kawaii.nahida.actest.module.modules
 import kawaii.nahida.actest.ACTest
 import kawaii.nahida.actest.module.Module
-import kawaii.nahida.actest.utils.bukkit.PlayerExtensions.sendActionBar
+import net.kyori.adventure.text.Component
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageByEntityEvent
@@ -13,7 +13,7 @@ class DamageTestModule : Module("DamageTest") {
     fun onPlayerAttack(event: EntityDamageByEntityEvent) {
         (event.damager as? Player)
             ?.let { player ->
-                player.sendActionBar(
+                player.sendActionBar(Component.text(
                     arrayOf(
                         "预测伤害: ${String.format("%.1f", event.damage)}",
                         "实际伤害: ${String.format("%.1f", event.finalDamage)}",
@@ -22,7 +22,7 @@ class DamageTestModule : Module("DamageTest") {
                         "攻击潜行: ${if(player.isSneaking) "是" else "否"}",
                         "当前移速: ${ACTest.statisticsManager.getPlayerData(player).bps.getFormated(1, 2)}"
                     ).joinToString("  ")
-                )
+                ))
             }
     }
 }
