@@ -33,3 +33,6 @@ commands:
   spawn:
     description: 返回出生点
     usage: /spawn
+  trash:
+    description: 打开垃圾桶
+    usage: /trash
