@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack
 @Suppress("Unused")
 class CommandItemModule : Module("CommandItem") {
     companion object {
-        val CONTAINER_GIVE_COMMAND = "${ChatColor.BLUE}获取物品"
+        val CONTAINER_TITLE = "${ChatColor.BLUE}获取物品"
         val ITEMS = arrayOf(
             ItemStack(Material.GLASS, 64), // 玻璃
             ItemStack(Material.OAK_LEAVES, 64), // 树叶
@@ -48,9 +48,10 @@ class CommandItemModule : Module("CommandItem") {
             ItemStack(Material.GOLDEN_APPLE, 64), // 金苹果 - 普通
             ItemStack(Material.ENCHANTED_GOLDEN_APPLE, 64), // 金苹果 - 附魔
             ItemStack(Material.WATER_BUCKET), // 水桶
-
+            ItemStack(Material.ENDER_PEARL, 64) // 末影珍珠
         )
     }
+
     @EventHandler
     fun onPlayerCommand(event: PlayerCommandPreprocessEvent) {
         val player = event.player
@@ -59,7 +60,7 @@ class CommandItemModule : Module("CommandItem") {
 
 
             // 创建一个新的虚拟容器
-            Bukkit.createInventory(null, InventoryType.CHEST, CONTAINER_GIVE_COMMAND)
+            Bukkit.createInventory(null, InventoryType.CHEST, CONTAINER_TITLE)
                 .also { container ->
                     ITEMS.forEach {
                         container.addItem(it)
@@ -75,7 +76,7 @@ class CommandItemModule : Module("CommandItem") {
     @EventHandler
     fun onInventoryClick(event: InventoryClickEvent) {
         // 检查点击的容器标题 (Vulcan提权同款 (不是
-        if (event.view.originalTitle == CONTAINER_GIVE_COMMAND) {
+        if (event.view.originalTitle == CONTAINER_TITLE) {
             if (event.clickedInventory != event.whoClicked.inventory) {
                 event.whoClicked.inventory.addItem(event.currentItem ?: return) // 给予玩家物品
             }
