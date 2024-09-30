@@ -1,4 +1,4 @@
-package kawaii.nahida.actest.module.modules
+package kawaii.nahida.actest.module.modules.commnds
 
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageCommandUsage
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageWithPrefix
