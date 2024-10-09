@@ -7,7 +7,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 
-class SpeedStatisticsData() {
+class SpeedStatisticsData {
     private var speeds: MutableList<Double> = Collections.synchronizedList(ArrayList())
     private var lastLocation: Location? = null
 

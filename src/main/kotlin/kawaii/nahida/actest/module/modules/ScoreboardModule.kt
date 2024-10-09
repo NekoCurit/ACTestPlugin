@@ -3,7 +3,6 @@ package kawaii.nahida.actest.module.modules
 import kawaii.nahida.actest.ACTest
 import kawaii.nahida.actest.module.Module
 import kawaii.nahida.actest.utils.StringUtils
-import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
@@ -12,7 +11,6 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
-import org.bukkit.scoreboard.Criteria
 import org.bukkit.scoreboard.DisplaySlot
 import org.bukkit.scoreboard.Objective
 
@@ -27,8 +25,9 @@ class ScoreboardModule : Module("Scoreboard") {
         val scoreboard = Bukkit.getScoreboardManager().newScoreboard
 
         player.scoreboard = scoreboard
-        val objective = scoreboard.registerNewObjective("Scoreboard", Criteria.DUMMY, Component.text("猫猫的测试服务器")).apply {
+        val objective = scoreboard.registerNewObjective("Scoreboard", "dummy").apply {
             displaySlot = DisplaySlot.SIDEBAR
+            displayName = "猫猫的测试服务器"
         }
 
         objectives[player] = Pair(objective, hashMapOf())

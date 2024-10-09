@@ -7,7 +7,7 @@ import com.comphenix.protocol.events.PacketAdapter
 import com.comphenix.protocol.events.PacketEvent
 import kawaii.nahida.actest.ACTest
 import kawaii.nahida.actest.module.Module
-import net.kyori.adventure.text.Component
+import kawaii.nahida.actest.utils.bukkit.PlayerExtensions.sendActionBar
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
@@ -31,17 +31,15 @@ class PositionTeleportInfoModule : Module("PositionTeleportInfo") {
             lastPositionPacketTime.forEach { (player, data) ->
                 when (val time = currentTime - data.time) {
                     in 0..5500 -> player.sendActionBar(
-                        Component.text(
-                            arrayOf(
-                                "${ChatColor.LIGHT_PURPLE}接收到 Server Position 包",
-                                "${ChatColor.WHITE}|",
-                                "${ChatColor.LIGHT_PURPLE}位置: ${data.x}, ${data.y}, ${data.z}",
-                                "${ChatColor.WHITE}|",
-                                "${ChatColor.LIGHT_PURPLE}时间差: ${String.format("%.2f", time / 1000.0)}s"
-                            ).joinToString(" ")
-                        )
+                        arrayOf(
+                            "${ChatColor.LIGHT_PURPLE}接收到 Server Position 包",
+                            "${ChatColor.WHITE}|",
+                            "${ChatColor.LIGHT_PURPLE}位置: ${data.x}, ${data.y}, ${data.z}",
+                            "${ChatColor.WHITE}|",
+                            "${ChatColor.LIGHT_PURPLE}时间差: ${String.format("%.2f", time / 1000.0)}s"
+                        ).joinToString(" ")
                     )
-                    in 5501..6000 -> player.sendActionBar(Component.text(""))
+                    in 5501..6000 -> player.sendActionBar("")
                 }
             }
         }

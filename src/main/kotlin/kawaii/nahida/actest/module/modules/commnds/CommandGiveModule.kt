@@ -13,22 +13,21 @@ class CommandGiveModule : Module("CommandGive") {
     companion object {
         val BLOCK_MATERIALS = arrayOf(
             Material.AIR, // 空气
-            Material.COMMAND_BLOCK, // 命令方块
-            Material.COMMAND_BLOCK_MINECART, // 命令方块矿车
+            Material.COMMAND, // 命令方块
+            Material.COMMAND_MINECART, // 命令方块矿车
             Material.BEDROCK, // 基岩
             Material.BARRIER, // 屏障
-            Material.LEGACY_MOB_SPAWNER, // 刷怪笼
-            Material.PISTON_HEAD, // 活塞
-            Material.LEGACY_PISTON_EXTENSION, // 活塞
-            Material.LEGACY_PISTON_STICKY_BASE, // 活塞
-            Material.LEGACY_PISTON_MOVING_PIECE, // 活塞
-            Material.LEGACY_PISTON_BASE, // 活塞
+            Material.MOB_SPAWNER, // 刷怪笼
+            Material.PISTON_EXTENSION, // 活塞
+            Material.PISTON_STICKY_BASE, // 活塞
+            Material.PISTON_MOVING_PIECE, // 活塞
+            Material.PISTON_BASE, // 活塞
             Material.TNT, // 炸药
-            Material.TNT_MINECART, // TNT矿车
+            Material.EXPLOSIVE_MINECART, // TNT矿车
             Material.DISPENSER, // 发射器 (出图倒水
             Material.WRITTEN_BOOK, // 书与笔 (数据溢出ban人, 局域回档, 丢给管理员管理员打开强制执行命令
-            Material.MAP, // 空地图 (刷存档占用
-            Material.FILLED_MAP // 地图
+            Material.EMPTY_MAP, // 空地图 (刷存档占用
+            Material.MAP // 地图
         )
     }
 
