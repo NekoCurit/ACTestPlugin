@@ -21,7 +21,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.0")
     implementation("org.reflections:reflections:0.9.12")
-    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0-SNAPSHOT")
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
 }
 
 kotlin {
