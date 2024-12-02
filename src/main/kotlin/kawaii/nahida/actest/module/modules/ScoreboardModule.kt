@@ -57,7 +57,8 @@ class ScoreboardModule : Module("Scoreboard") {
             try {
                 arrayOf(
                     "${ChatColor.WHITE}${ChatColor.WHITE}",
-                    "${ChatColor.WHITE}Health: ${ChatColor.GREEN}${player.health}/${player.maxHealth}",
+                    "${ChatColor.WHITE}Health: ${ChatColor.GREEN}${String.format("%.2f", player.health)}/${player.maxHealth}",
+                    "${ChatColor.WHITE}HurtTime: ${ChatColor.GREEN}${player.noDamageTicks}/${player.maximumNoDamageTicks}",
                     "${ChatColor.WHITE}CPS: ${ChatColor.GREEN}${ACTest.statisticsManager.getPlayerData(player).cps.get(1000)}",
                     "${ChatColor.WHITE}BPS: ${ChatColor.GREEN}${ACTest.statisticsManager.getPlayerData(player).bps.getFormated(1, 2)}",
                     "${ChatColor.WHITE}PPS: ${ChatColor.GREEN}${ACTest.statisticsManager.getPlayerData(player).ppsc.get(1000)}",
