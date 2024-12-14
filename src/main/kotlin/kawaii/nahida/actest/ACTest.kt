@@ -1,5 +1,6 @@
 package kawaii.nahida.actest
 
+import kawaii.nahida.actest.ac.ACToggleManager
 import kawaii.nahida.actest.handle.message.MessageManager
 import kawaii.nahida.actest.handle.statistics.StatisticsManager
 import kawaii.nahida.actest.module.ModuleManager
@@ -14,5 +15,6 @@ object ACTest {
     lateinit var moduleManager: ModuleManager
     lateinit var statisticsManager: StatisticsManager
     lateinit var messageManager: MessageManager
+    lateinit var acToggleManager: ACToggleManager
 
 }
