@@ -1,6 +1,7 @@
 package kawaii.nahida.actest.module.modules.commnds
 
 import kawaii.nahida.actest.module.Module
+import kawaii.nahida.actest.utils.bukkit.StringExtensions.commandStartWith
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
@@ -15,13 +16,12 @@ class CommandTrashModule : Module("CommandTrash") {
 
     @EventHandler
     fun onPlayerCommand(event: PlayerCommandPreprocessEvent) {
-        val player = event.player
-        if (event.message.equals("/trash", true)) {
+        if (event.message.commandStartWith("trash")) {
             event.isCancelled = true
 
             Bukkit.createInventory(null, InventoryType.CHEST, CONTAINER_TITLE)
                 .also {
-                    player.openInventory(it)
+                    event.player.openInventory(it)
                 }
         }
     }

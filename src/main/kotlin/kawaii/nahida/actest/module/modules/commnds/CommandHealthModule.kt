@@ -3,6 +3,7 @@ package kawaii.nahida.actest.module.modules.commnds
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageCommandUsage
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageWithPrefix
 import kawaii.nahida.actest.module.Module
+import kawaii.nahida.actest.utils.bukkit.StringExtensions.commandStartWith
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 
@@ -11,7 +12,7 @@ class CommandHealthModule : Module("CommandHealth") {
 
     @EventHandler
     fun onPlayerCommand(event: PlayerCommandPreprocessEvent) {
-        if (event.message.startsWith("/health", true)) {
+        if (event.message.commandStartWith("health")) {
             event.isCancelled = true
 
             val args = event.message.split(" ")

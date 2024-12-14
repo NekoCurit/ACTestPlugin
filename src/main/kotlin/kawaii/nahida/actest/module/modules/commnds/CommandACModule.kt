@@ -5,6 +5,7 @@ import kawaii.nahida.actest.ac.ACToggle
 import kawaii.nahida.actest.handle.message.MessageExtend.sendCommandResult
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageWithPrefix
 import kawaii.nahida.actest.module.Module
+import kawaii.nahida.actest.utils.bukkit.StringExtensions.commandStartWith
 import org.bukkit.ChatColor
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
@@ -14,7 +15,7 @@ class CommandACModule : Module("CommandAC") {
 
     @EventHandler
     fun onPlayerCommand(event: PlayerCommandPreprocessEvent) {
-        if (event.message.startsWith("/ac", true)) {
+        if (event.message.commandStartWith("ac")) {
             event.isCancelled = true
 
             val args = event.message.split(" ")

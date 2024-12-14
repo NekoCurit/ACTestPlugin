@@ -1,6 +1,7 @@
 package kawaii.nahida.actest.module.modules.commnds
 
 import kawaii.nahida.actest.module.Module
+import kawaii.nahida.actest.utils.bukkit.StringExtensions.commandStartWith
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
@@ -54,10 +55,8 @@ class CommandItemModule : Module("CommandItem") {
 
     @EventHandler
     fun onPlayerCommand(event: PlayerCommandPreprocessEvent) {
-        val player = event.player
-        if (event.message.equals("/item", true)) {
+        if (event.message.commandStartWith("i", "item")) {
             event.isCancelled = true
-
 
             // 创建一个新的虚拟容器
             Bukkit.createInventory(null, InventoryType.CHEST, CONTAINER_TITLE)
@@ -67,8 +66,7 @@ class CommandItemModule : Module("CommandItem") {
                     }
                 }
                 .also {
-                    // 为玩家打开容器
-                    player.openInventory(it)
+                    event.player.openInventory(it)
                 }
         }
     }
