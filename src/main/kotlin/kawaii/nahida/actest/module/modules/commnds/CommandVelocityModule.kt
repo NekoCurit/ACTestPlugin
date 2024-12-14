@@ -1,5 +1,6 @@
 package kawaii.nahida.actest.module.modules.commnds
 
+import kawaii.nahida.actest.handle.message.MessageExtend.sendCommandResult
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageCommandUsage
 import kawaii.nahida.actest.handle.message.MessageExtend.sendMessageWithPrefix
 import kawaii.nahida.actest.module.Module
@@ -32,9 +33,9 @@ class CommandVelocityModule : Module("CommandVelocity") {
                 }
 
                 event.player.velocity = Vector(motionX, motionY, motionZ)
-                event.player.sendMessageCommandUsage("执行 Velocity 成功")
+                event.player.sendMessageWithPrefix("执行 Velocity 成功")
             } catch (t: Throwable) {
-                event.player.sendMessageCommandUsage(t.message ?: "/velocity <MotionX> <MotionY> <MotionZ> [Damage]")
+                event.player.sendCommandResult(t ,"/velocity <MotionX> <MotionY> <MotionZ> [Damage]")
             }
         }
     }
